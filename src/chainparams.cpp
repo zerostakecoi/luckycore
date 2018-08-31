@@ -51,8 +51,8 @@ static CBlock CreateGenesisBlock(const char* pszTimestamp, const CScript& genesi
  */
 static CBlock CreateGenesisBlock(uint32_t nTime, uint32_t nNonce, uint32_t nBits, int32_t nVersion, const CAmount& genesisReward)
 {
-    const char* pszTimestamp = "Lucky to the moon 13/02/2018";
-    const CScript genesisOutputScript = CScript() << ParseHex("042fe8e734798ff45e95703dfa6ae354e92258f156a3689ae1ac1b9ef3af6e0f63b39a82f59a91c21577cdec8ddeac0844330b490ffb48a7647e103b9a725c9f4f") << OP_CHECKSIG;
+    const char* pszTimestamp = "Don't work for weekends.";
+    const CScript genesisOutputScript = CScript() << ParseHex("04cfd5408d625c31ef248035eb9896bfa2b470950a66c267bcfcc117a50b518973b19aef7bc7f20ca91d859ac3bbca90cadd6b6ab7a94fd087a2866da32a12881c") << OP_CHECKSIG;
     return CreateGenesisBlock(pszTimestamp, genesisOutputScript, nTime, nNonce, nBits, nVersion, genesisReward);
 }
 
@@ -117,14 +117,14 @@ public:
         pchMessageStart[2] = 0xcb;
         pchMessageStart[3] = 0x4f;
         vAlertPubKey = ParseHex("047f5262c4e3c9aafe67a24ba5b8551443964bb6dc23e5dc94a0e3135b2caead623a2b7c4b2ba632ee32aa572e8882cf4f68c3d39d2ee5cba4f8f147aa6c39a2a4");
-        nDefaultPort = 7717;
+        nDefaultPort = 7727;
         nMaxTipAge = 6 * 60 * 60; // ~144 blocks behind -> 2 x fork detection time, was 24 * 60 * 60 in bitcoin
         nPruneAfterHeight = 100000;
 
-        genesis = CreateGenesisBlock(1518539700, 1016522, 0x1e0ffff0, 1, 50 * COIN);
+        genesis = CreateGenesisBlock(1535729626, 129815, 0x1e0ffff0, 1, 50 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
-        assert(consensus.hashGenesisBlock == uint256S("00000ce77a49057b7b44075e9ae575451aa726d89759398febcfeb7a7460e73c"));
-        assert(genesis.hashMerkleRoot == uint256S("b0aad15d30e99e619d1fa80194cb14cdc22b46e8897a154ed44d3e3c974e4463"));
+        assert(consensus.hashGenesisBlock == uint256S("0000030d8a37b030df149e7ac2e6e7406b810f901245d5210ed9b1d549f45963"));
+        assert(genesis.hashMerkleRoot == uint256S("9003c8efa65031c0f4c8faa17cd383a6ad8c6d3f0f201d82cbb600a3e7e63e34"));
 
 
         vSeeds.push_back(CDNSSeedData("luckybit.online", "dnss1.luckybit.online"));
@@ -160,8 +160,8 @@ public:
 
         checkpointData = (CCheckpointData) {
             boost::assign::map_list_of
-            (    0, uint256S("00000ce77a49057b7b44075e9ae575451aa726d89759398febcfeb7a7460e73c")),
-            1518539700, // * UNIX timestamp of last checkpoint block
+            (    0, uint256S("")),
+            1535729626, // * UNIX timestamp of last checkpoint block
             0,    // * total number of transactions between genesis and last checkpoint
                         //   (the tx=... number in the SetBestChain debug.log lines)
             2800        // * estimated number of transactions per day after checkpoint
